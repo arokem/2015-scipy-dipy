@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title> Statistical learning of brain structure in DIPY </title>
+
+		<meta name="description" content="Presentation of Dipy, a library for the analysis of diffusion MRI data in Python.">
+		<meta name="author" content="Ariel Rokem">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<img src="images/dipy-logo.png" alt="DIPY logo" align="middle" style="background:none; border:none; box-shadow:none;">
+					<h2>Statistical learning of brain structure in Dipy</h2>
+					<p><a href="http://arokem.org">Ariel Rokem</a>, <a href="http://escience.washington.edu">University of Washington eScience Institute</a> </p>
+					<p class="fragment"> Follow along at <t><a href="http://tinyurl.com/ohbm2015-dipy">http://tinyurl.com/ohbm2015-dipy</t></a></p>
+				</section>
+
+<!-- 
+
+General structure:				
+1. What is diffusion MRI (1 minute, 1 slide)
+2. What is Dipy (1 minute, 1 slide)
+3. What are the different parts (modules) of dipy, and what do they do (4 minutes, 3 slides) 
+4. Zoom in on tractography (2 minutes, 1 or 2 slides). I thought it would be nice to focus in on this, because there's a lot of nice work that you and others have put into this part.
+5. Who is involved. This is particularly important, because we are quite unique in being so international, and not "owned" by any specific lab - it's a super-strong point we should make in this presentation. (1-2 minutes, 1 slide)
+6. Summary and outlook ("Join us!").   
+				
+-->
+
+				<section>
+					<h2>Diffusion MRI</h2>
+				dMRI measures the micro-movements of water in each voxel
+					   <p class="fragment">=> Microstructural tissue properties</p>
+					   <p class="fragment">=> Distribution of nerve fiber orientations</p>
+					   <p class="fragment">=> Brain connectivity </p>
+				</section>
+
+				<section>
+					<h2>Diffusion MRI</h2>
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/dMRI-signal-movie.mp4">
+					</video>					
+				</section>
+				
+				<section>
+					<h3>Modeling diffusion</h3>
+					<div class="fragment">
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/tensor-signal-movie.mp4">
+					</video>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>Modeling diffusion</h3>
+					<div class="fragment">
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/tensor-ellipse-movie.mp4">
+					</video>
+					</div>
+				</section>
+
+				<section>
+					<h3>From diffusion to tracks</h3>
+					<div style="position: absolute; left: 210px;">
+					<img src="ipynb/axial_slice.png" height="505">
+					</div>	
+					
+					<div class = "fragment fade-in" style="position: absolute;">
+						
+					<canvas id="zoom-box" width="1000" height="1000"></canvas>
+					    <script>
+					      var canvas = document.getElementById('zoom-box');
+					      var context = canvas.getContext('2d');
+
+					      context.beginPath(430, 200);
+					      context.moveTo(430, 200);
+					      context.lineTo(430, 250);
+					      context.lineTo(480, 250);
+						  context.lineTo(480, 200);
+						  context.lineTo(430, 200);
+						  
+					      context.lineWidth = 2;
+
+					      // line color
+					      context.strokeStyle = 'white';
+					      context.stroke();
+					    </script>
+					  </div>
+				</section>
+
+				<section>
+					<h3>From diffusion to tracks</h3>
+					<div style="position: absolute;">
+					<img src="ipynb/d2t-bkgrnd.png" style="background:none; border:none; box-shadow:none;" height="505", width="766">
+				</div>
+<div class="fragment" style="position: absolute; left: 91px; top:58px;"><img src="ipynb/tensor_ellipsoids.png" style="background:none; border:none; box-shadow:none; opacity:0.4; filter:alpha(opacity=40);">
+					</div>
+					
+					<div class = "fragment fade-in" style="position: absolute;">
+						
+					<canvas id="fiber" width="1000" height="1000"></canvas>
+					    <script>
+					      var canvas = document.getElementById('fiber');
+					      var context = canvas.getContext('2d');
+
+					      context.beginPath();
+					      context.moveTo(590, 170);
+					      context.bezierCurveTo(400, 300, 365, 80, 378, 65);
+					      context.lineWidth = 10;
+
+					      // line color
+					      context.strokeStyle = 'yellow';
+					      context.stroke();
+					    </script>
+					  </div>
+				</section>
+
+				<section>
+					<h3>From diffusion to tracks</h3>
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/corpuscallosum-sagittal-movie.mp4">
+					</video>					
+					
+				</section>
+
+				<section>
+					<h2>DIPY: Diffusion MRI in Python</h2>
+					   <p class="fragment"> Open source </p>
+					   <p class="fragment"> Open development process </p>
+					   <p class="fragment"> International: contributors from at least six different countries </p>
+					   <p class="fragment"> Shared: not 'owned' by any particular lab</p>
+					   <p class="fragment"> Philosophy: implement many different methods and compare between them, rather than prescribing our own 'favorite' methods. Many methods have different strenghts and weaknesses</p>
+					   
+				</section>
+
+				<section>
+				<img src="images/dipy_overview_figure.png" style="background:none; border:none; box-shadow:none;">
+
+				</section>
+
+				<section>					
+					<h2>Properly explained</h2>
+					   <p class="fragment"> <a href="http://nipy.org/dipy/examples_index.html">Examples you can run </a></p>
+
+				</section>
+				
+				<section>
+				</section>
+
+				<section>
+					<h3> Contributors </h3>
+				</section>
+
+				<section>
+					<h3> Google Summer of Code </h3>
+					<div style="position: absolute;">
+						
+					</div>
+					
+				</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
