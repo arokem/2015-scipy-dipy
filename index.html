@@ -29,6 +29,24 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
+
+		<!-- Draw arrows -->		
+		<script>
+
+        function canvas_arrow(context, fromx, fromy, tox, toy){
+        var headlen = 10;   // length of head in pixels
+        var angle = Math.atan2(toy-fromy,tox-fromx);
+        context.moveTo(fromx, fromy);
+        context.lineTo(fromx+headlen*Math.cos(angle+Math.PI/6),fromy+headlen*Math.sin(angle+Math.PI/6));
+        context.moveTo(fromx, fromy);
+        context.lineTo(fromx+headlen*Math.cos(angle-Math.PI/6),fromy+headlen*Math.sin(angle-Math.PI/6));
+	    context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);
+        context.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+        context.moveTo(tox, toy);
+        context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));}
+       	</script>
+	
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -42,8 +60,149 @@
 					<img src="images/dipy-logo.png" alt="DIPY logo" align="middle" style="background:none; border:none; box-shadow:none;">
 					<h2>Statistical learning of brain structure in Dipy</h2>
 					<p><a href="http://arokem.org">Ariel Rokem</a>, <a href="http://escience.washington.edu">University of Washington eScience Institute</a> </p>
-					<p class="fragment"> Follow along at <t><a href="http://arokem.github.io/2015-scipy-dipy/">http://tinyurl.com/ohbm2015-dipy</t></a></p>
+					<p class="fragment"> Follow along at <t><a href="http://arokem.github.io/2015-scipy-dipy/">http://arokem.github.io/2015-scipy-dipy/</t></a></p>
 				</section>
+
+		    	<section>
+		    		<h3>Normal behavior is supported by brain connectivity</h3>
+					<img src="./images/OldenDays.png" height="505" style="background:none; border:none; box-shadow:none;">
+					<div style="position: absolute; left: 500px;" >
+						<small>Image from Catani and ffytche (2015)</small>
+					</div>
+		    	</section>
+
+		    	<section>
+					<img src="./images/optic-radiation-postmortem.png" height="505" style="background:none; border:none; box-shadow:none;">
+		    	</section>
+
+		    	<section>
+		    		<h2>Not just passive cables</h2>
+			    	<p class="fragment">Brain connections change with development</p>
+					<p class="fragment">Individual differences account for differences in behaviour</p>
+			    	<p class="fragment">Adapt with learning</p>
+					<p class="fragment">Clinical significance</p>
+		    	</section>
+
+				<section>
+				<h2> Magnetic Resonance Imaging (MRI)</h2>
+		    	<p class="fragment">Neural activity: functional MRI</p>
+			    <p class="fragment">Anatomy: structural MRI</p>
+			    <p class="fragment">...</p>
+				<p class="fragment">Brain connectivity: diffusion MRI</p>
+		    	</section>
+
+		    	<section>
+					<div style="position: absolute; left: 100px;">
+					<img src="./images/optic-radiation-postmortem.png" height="505" style="background:none; border:none; box-shadow:none;">
+					</div>
+
+					<div class="fragment" style="position: absolute; left: 500px;">
+					
+					<img src="./images/nerve-fiber.png" height="505" style="background:none; border:none; box-shadow:none;">
+					</div>
+
+		    	</section>
+				<section>
+					<h2>Diffusion MRI</h2>
+					<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-iso-horiz" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrows-iso-horiz').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 390, 450, 590, 450);
+					      context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+				<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-iso-vert" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrows-iso-vert').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 250, 350, 250, 150);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+
+					<div class="fragment">
+						Isotropic diffusion
+					</div>
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/diffusion-isotropic.mp4">
+					</video>			
+		
+				</section>
+
+				<section>
+					<h2>Diffusion MRI</h2>
+				<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-aniso-vert" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrows-aniso-vert').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 250, 325, 250, 175);
+						context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+					<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-aniso-horiz" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrows-aniso-horiz').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 370, 400, 610, 400);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+
+					<div class="fragment">
+						Anisotropic diffusion
+					</div>
+					<video width="600" autoplay loop>
+					  <source src="./ipynb/diffusion-anisotropic.mp4">
+					</video>					
+				</section>
+
+		    	<section>
+
+					<div class = "fragment fade-out" style="position: absolute; left: 100px;">
+					<img src="./images/optic-radiation-postmortem.png" height="505" style="background:none; border:none; box-shadow:none;">
+					</div>
+
+					<div style="position: absolute; left: 500px;">
+					<img src="./images/nerve-fiber.png" height="505" style="background:none; border:none; box-shadow:none;">
+					</div>
+
+		    		<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="fiber-arrow-horiz" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('fiber-arrow-horiz').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 630, 600, 800, 600);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+					<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="fiber-arrow-vert" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('fiber-arrow-vert').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 450, 100, 450, 400);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					  </div>
+
+		    	</section>
 
 				<section>
 					<h2>Diffusion MRI</h2>
@@ -68,7 +227,6 @@
 					</video>
 					</div>
 				</section>
-
 
 				<section>
 					<h3>Modeling diffusion</h3>
@@ -149,7 +307,7 @@
 					   <p class="fragment"> Open development process </p>
 					   <p class="fragment"> International: contributors from at least six different countries </p>
 					   <p class="fragment"> Shared: not 'owned' by any particular lab</p>
-					   <p class="fragment"> Philosophy: implement many different methods and compare between them, rather than prescribing our own 'favorite' methods. Many methods have different strenghts and weaknesses</p>
+					   <p class="fragment"> Philosophy: implement many different methods and compare between them, rather than prescribing our own 'favorite' methods. Many methods have different strengths and weaknesses</p>
 					   
 				</section>
 
