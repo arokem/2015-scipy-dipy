@@ -461,40 +461,53 @@
 
 				<section>
 				<h2>Dipy cross-validation API</h2>
-				<p class="fragment"> Uniform model API
-					<div class="fragment">
-					<pre><code contenteditable>
-gtab = gradient_table(...)
-model = ReconstModel(gtab, ...)
-fit = model.fit(data, ...) 
-prediction = fit.predict(gtab, ...)
-</pre></code></div>
+				<code data-trim>
+				<div class="fragment" align="left" style="position:absolute; left: -100px" >
+				gtab = gradient_table(...)
+				<p class="fragment" align="left">
+				model = ReconstModel(gtab, ...)
+				<p class="fragment" align="left">
+				fit = model.fit(data, ...) # => ReconstFit
+				<div class="fragment" align="left">
+				prediction = fit.predict(gtab, ...)
+				</div>
+				</code>
 				</section>
 
 				<section>
-					<h2>For example </h2>
-					<pre><code contenteditable>
-model = dti.TensorModel(gtab)
-fit = model.fit(data1)
-prediction = fit.predict(gtab)
-RMSE = np.sqrt(np.mean((prediction - data2) ** 2), -1))
-rRMSE = RMSE / np.sqrt(np.mean((data1 - data2) ** 2), -1))
-					</pre></code>
+				<h2>For example </h2>
+				<code>
+				<div class="fragment" align="left" style="position:absolute; left: -100px">
+				<p class="fragment" align="left">
+				model = dti.TensorModel(gtab)
+				<p class="fragment" align="left">
+				fit = model.fit(data1)
+				<p class="fragment" align="left">
+				prediction = fit.predict(gtab)
+				<p class="fragment" align="left">
+				RMSE = np.sqrt(\ <br> np.mean((prediction - data2) ** 2), -1))
+				<p class="fragment" align="left">
+				rRMSE = RMSE / np.sqrt(\ <br> np.mean((data1 - data2) ** 2), -1))
+				</code>
 				</section>
+
 
 				<section>
 					<img src="images/rRMSE-tensor.png" style="background:none; border:none; box-shadow:none;">
 
 				</section>
 
-				<section>
-<h2>Dipy cross-validation API</h2>
-					<pre><code contenteditable>
-model = dti.TensorModel(gtab)
-fit = model.fit(data)
-prediction = fit.predict(gtab)
-
-					</pre></code>
+				<section><h3>k-fold cross-validation</h3>
+				<code>
+				<div class="fragment" align="left" style="position:absolute; 	left: -100px">
+				<p class="fragment" align="left">
+				# Use a k of 2
+				<p class="fragment" align="left">
+				dti_prediction=kfold_xval(dti_model, data, 2)
+				<p class="fragment" align="left">
+				csd_prediction=kfold_xval(csd_model, data, 2)
+				</code>
+				</div>	
 				</section>
 
 				<section>
