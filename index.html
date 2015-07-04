@@ -80,11 +80,11 @@
 			    	<p class="fragment">Brain connections change with development</p>
 					<p class="fragment">Individual differences account for differences in behaviour</p>
 			    	<p class="fragment">Adapt with learning</p>
-					<p class="fragment">Clinical significance</p>
+					<p class="fragment">This has clinical significance</p>
 		    	</section>
 
 				<section>
-				<h2> Magnetic Resonance Imaging (MRI)</h2>
+				<h3> Magnetic Resonance Imaging (MRI)</h3>
 		    	<p class="fragment">Neural activity: functional MRI</p>
 			    <p class="fragment">Anatomy: structural MRI</p>
 			    <p class="fragment">...</p>
@@ -221,7 +221,7 @@
 				
 				<section>
 					<h3><a href="https://github.com/arokem/2015-scipy-dipy/blob/gh-pages/ipynb/tensor-reconstruction.ipynb">Modeling</a> diffusion</h3>
-					<div class="fragment">
+					<div>
 					<video width="600" autoplay loop>
 					  <source src="./ipynb/tensor-signal-movie.mp4">
 					</video>
@@ -230,33 +230,63 @@
 
 				<section>
 					<h3><a href="https://github.com/arokem/2015-scipy-dipy/blob/gh-pages/ipynb/tensor-reconstruction.ipynb">Modeling</a> diffusion</h3>
-					<div class="fragment">
+					<div style="position: absolute; top: 200px;" >
+					<image src="./images/q-form.png" style="background:none; border:none; box-shadow:none;">
+					</div>
+					<div style="position: absolute; left: 500px; top: 650px;" >
+						<small>Basser, Mattielo and Le Bihan (1994)</small>
+					</div>
+	
+				</section>
+
+
+				<section>
+					<h3><a href="https://github.com/arokem/2015-scipy-dipy/blob/gh-pages/ipynb/tensor-reconstruction.ipynb">Modeling</a> diffusion</h3>
+					<div>
 					<video width="600" autoplay loop>
 					  <source src="./ipynb/tensor-ellipse-movie.mp4">
 					</video>
+					</div>
+					<div style="position: absolute; left: 500px; top: 650px;"" >
+						<small>Basser, Mattielo and Le Bihan (1994)</small>
 					</div>
 				</section>
 
 				<section>
 					<h3>Diffusion statistics</h3>
-					<div class="fragment" style="position: absolute; left: 0px;">
+					<div class="fragment" style="position: absolute; left: 14px;">
 					<img src="images/tensor-stats1.png" height="400" style="background:none; border:none; box-shadow:none;" >
 					<div style="position: absolute; left: 75px; top: 420px;">
 						<small>Mean diffusivity</small>
 					</div>
+					<div style="position: absolute; left: -8px;">
+						<img src="images/md-scale.png" height="40" style="background:none; border:none; box-shadow:none;">
 					</div>
-					<div class="fragment fade-in" style="position: absolute; left: 0px;">
+					<div style="position: absolute; left: 222px; top:432px; ">
+						<img src="images/md-units.png" height="50" style="background:none; border:none; box-shadow:none;">
+					</div>
+					</div>
+					<div class="fragment fade-in" style="position: absolute; left: 7px;">
 					<img src="images/tensor-stats2.png" height="400" style="background:none; border:none; box-shadow:none;" >
+
+					<div style="position: absolute; left: 350px; top:432px; ">
+						<video width="200" autoplay loop>
+						<source src="./images/diffusion-fa-251.mov">
+					</div>
+
 					<div style="position: absolute; left: 350px; top: 420px;">
 						<small>Fractional anisotropy</small>
 					</div>
+
 					</div>
 					<div class="fragment fade-in" style="position: absolute; left: 0px;">
 					<img src="images/tensor-stats3.png" height="400" style="background:none; border:none; box-shadow:none;" >
 					<div style="position: absolute; left: 600px; top: 420px;">
 						<small>Principal diffusion direction</small>
 					</div>
-
+					<div style="position: absolute; left: 700px; top:432px; ">
+						<img src="images/axes.png" height="100" style="background:none; border:none; box-shadow:none;">
+					</div>
 					</div>
 					</section>
 
@@ -294,11 +324,9 @@
 					<div style="position: absolute;">
 					<img src="ipynb/d2t-bkgrnd.png" style="background:none; border:none; box-shadow:none;" height="505", width="766">
 				</div>
-<div class="fragment" style="position: absolute; left: 91px; top:58px;"><img src="ipynb/tensor_ellipsoids.png" style="background:none; border:none; box-shadow:none; opacity:0.4; filter:alpha(opacity=40);">
+					<div class="fragment" style="position: absolute; left: 91px; top:58px;"><img src="ipynb/tensor_ellipsoids.png" style="background:none; border:none; box-shadow:none; opacity:0.4; filter:alpha(opacity=40);">
 					</div>
-					
-					<div class = "fragment fade-in" style="position: absolute;">
-						
+					<div class = "fragment fade-in" style="position: absolute;">	
 					<canvas id="fiber" width="1000" height="1000"></canvas>
 					    <script>
 					      var canvas = document.getElementById('fiber');
@@ -335,17 +363,146 @@
 
 				<section>
 				<img src="images/dipy_overview_figure.png" style="background:none; border:none; box-shadow:none;">
+				</section>
+
+				<section>
+					<h3>Diffusion MRI: the challenge of validation</h2>
+				</section>
+
+				<section>
+				<div style="position: absolute; left: 0px;">
+				<img src="images/two-algs.png" style="background:none; border:none; box-shadow:none;" height="600px;">
+				</div>
+				<div style="position: absolute; left: 600px; top: 150px;">
+				Algorithm 1
+				</div>
+				<div style="position: absolute; left: 600px; top: 450px;">
+				Algorithm 2
+				</div>
+				</section>	
+				
+				<section>
+					<h2>A statistical learning approach</h2>
+					<div class="fragment">
+					<font size="80"><i>In-vivo validation</i></big></font>
+					</div>
+				</section>
+
+				<section>
+				<div style="position: absolute; left: 0px; top: 0px;">
+					<medium>Measurement #1</medium>
+				</div>
+				<div style="position: absolute; left: 0px; top: 100px;">
+					<img src="images/sig1.png" style="background:none; border:none; box-shadow:none;">
+				</div>
+				<div class="fragment">
+				<div style="position: absolute; left: 700px; top: 100px;">
+					<img src="images/sig2.png" style="background:none; border:none; box-shadow:none;">
+				</div>
+				<div style="position: absolute; left: 700px; top: 0px;">
+					<medium>Measurement #2</medium>
+				</div>
+				</div>
+				<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrow-test-retest" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrow-test-retest').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 300, 150, 650, 150);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+				</div>
+				<div class="fragment fade-in" style="position:absolute; left: 310px; top:100px">
+						Test-retest reliability
+				</div>
+				
+				<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrow-cv1" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrow-cv1').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 310, 400, 410, 400);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+				</div>
+				<div class="fragment fade-in" style="position:absolute; left: 430px; top:395px">
+						Model
+				</div>
+				<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrow-cv2" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrow-cv2').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 550, 400, 650, 400);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+				</div>
+
+				<div class="fragment fade-in" style="position:absolute; left: 350px; top:450px">
+					Cross-validation
+				</div>
+				</section>
+				<section>
+				<div>
+					<img src="images/rrmse1.png" style="background:none; border:none; box-shadow:none;">
+				</div>
+
+				<div class="fragment">
+					<img src="images/rrmse2.png" style="background:none; border:none; box-shadow:none;">
+				</div>
+	
+				</section>
+
+				<section>
+				<h2>Dipy cross-validation API</h2>
+				<p class="fragment"> Uniform model API
+					<div class="fragment">
+					<pre><code contenteditable>
+gtab = gradient_table(...)
+model = ReconstModel(gtab, ...)
+fit = model.fit(data, ...) 
+prediction = fit.predict(gtab, ...)
+</pre></code></div>
+				</section>
+
+				<section>
+					<h2>For example </h2>
+					<pre><code contenteditable>
+model = dti.TensorModel(gtab)
+fit = model.fit(data1)
+prediction = fit.predict(gtab)
+RMSE = np.sqrt(np.mean((prediction - data2) ** 2), -1))
+rRMSE = RMSE / np.sqrt(np.mean((data1 - data2) ** 2), -1))
+					</pre></code>
+				</section>
+
+				<section>
+					<img src="images/rRMSE-tensor.png" style="background:none; border:none; box-shadow:none;">
 
 				</section>
 
 				<section>
-					<h2>Validation is a big problem</h2>
+<h2>Dipy cross-validation API</h2>
+					<pre><code contenteditable>
+model = dti.TensorModel(gtab)
+fit = model.fit(data)
+prediction = fit.predict(gtab)
 
+					</pre></code>
+				</section>
+
+				<section>
+				<img src="images/dipy-tree.png" style="background:none; border:none; box-shadow:none;">
 				</section>
 
 
 			</div>
-
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
