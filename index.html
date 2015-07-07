@@ -62,12 +62,6 @@
 					<p><a href="http://arokem.org">Ariel Rokem</a>, <a href="http://escience.washington.edu">University of Washington eScience Institute</a> </p>
 					<p class="fragment"> Follow along at <t><a href="http://arokem.github.io/2015-scipy-dipy/">http://arokem.github.io/2015-scipy-dipy/</t></a></p>
 				</section>
-				<section>
-					<p class="fragment"> Measuring brain connectivity with diffusion MRI
-					<p class="fragment"> The Dipy project
-					<p class="fragment"> The validation problem
-					<p class="fragment"> <i>In vivo validation</i> through statistical learning 
-				</section>
 		    	<section>
 		    		<h3>Normal behavior is supported by brain connectivity</h3>
 					<img src="./images/OldenDays.png" height="505" style="background:none; border:none; box-shadow:none;">
@@ -238,6 +232,7 @@
 					</div>
 				</section>
 
+				<!-- Skip this slide 
 				<section>
 					<h3>Diffusion statistics</h3>
 					<div class="fragment" style="position: absolute; left: 14px;">
@@ -275,6 +270,7 @@
 					</div>
 					</div>
 					</section>
+				-->
 
 				<section>
 					<h3>From diffusion to tracks</h3>
@@ -339,7 +335,7 @@
 				</section>
 
 				<section>
-					<h2>DIPY: Diffusion MRI in Python</h2>
+					<h2><a href="http://dipy.org">DIPY</a>: Diffusion MRI in Python</h2>
 					<div class="fragment">
 					Part of the <a href="http://nipy.org">NIPY</a> community
 					<div style="position: absolute; left: 720px; top:75px;">
@@ -350,10 +346,14 @@
 					   <p class="fragment"> Open source </p>
 					   <p class="fragment"> Open development process </p>
 					   <p class="fragment"> International: contributors from at least six different countries </p>
-					   <p class="fragment"> Shared: not 'owned' by any particular lab</p>					   
+					   <p class="fragment"> Shared: not 'owned' by any particular lab</p>
 				</section>
+
 				<section>
 					<img src="./images/dipy-growth.png" style="background:none; border:none; box-shadow:none;">
+					   <div style="position: absolute; left: 700px; top: 700px">
+						<small><a href="http://journal.frontiersin.org/Journal/10.3389/fninf.2014.00008">Garyfallidis et al.(2014)</a></small>
+					</div>
 				</section>
 
 				<section>
@@ -365,15 +365,19 @@
 				</section>
 
 				<section>
-				<div style="position: absolute; left: 0px;">
-				<img src="images/two-algs.png" style="background:none; border:none; box-shadow:none;" height="600px;">
-				</div>
-				<div style="position: absolute; left: 600px; top: 150px;">
+				<div style="position: absolute; left: -200px; top: 150px;">
 				Algorithm 1
 				</div>
-				<div style="position: absolute; left: 600px; top: 450px;">
+				<div style="position: absolute; left: -200px; top: 450px;">
 				Algorithm 2
 				</div>
+				<div class="fragment" style="position: absolute; left: 0px;">
+				<img src="images/two-algs.png" style="background:none; border:none; box-shadow:none;" height="600px;">
+				</div>
+				<div class="fragment" style="position: absolute; left: 500px; top:-40px">
+				<img src="images/two-algs-conn.png" style="background:none; border:none; box-shadow:none;" height="700px;">
+				</div>
+
 				</section>	
 				
 				<section>
@@ -451,7 +455,10 @@
 				<div class="fragment">
 					<img src="images/rrmse2.png" style="background:none; border:none; box-shadow:none;">
 				</div>
-	
+
+				<div style="position: absolute; left: 500px; top: 650px;" >
+							<small>Rokem et al. (2015)</small>
+						</div>
 				</section>
 
 				<section>
@@ -489,6 +496,11 @@
 
 				<section>
 					<img src="images/rRMSE-tensor.png" style="background:none; border:none; box-shadow:none;" height="595">
+					<div style="position: absolute; left: 500px; top: 650px;" >
+							<small>Rokem et al. (2015)</small>
+					</div>
+				</section>
+
 				</section>
 
 				<section> 
@@ -506,7 +518,6 @@
 					<div class="fragment"style="position:absolute; 	left: -80px; top: 240px;">
 					Superior <br>longitudinal fasciculus
 					</div>
-
 				</section>
 				<section>
 					<div class="fragment fade-out"style="position:absolute; 	left: 350px; top: 80px;">
@@ -521,6 +532,9 @@
 					<div style="position:absolute; 	left: 86px; top: 115px;">
 					<img src="images/rRMSE_CSO_SSD4k-355.png" style="background:none; border:none; box-shadow:none;" height="470" width="620">
 					</div>
+				</div>
+				<div style="position: absolute; left: 500px; top: 650px;" >
+							<small>Rokem et al. (2015)</small>
 				</div>
 				</section>
 
@@ -572,6 +586,26 @@
 				</code>
 				</section>
 
+				<section>
+					<h2> Summary </h2>
+					<p class="fragment"> Measuring brain connectivity with diffusion MRI
+					<p class="fragment"> The Dipy project
+					<p class="fragment"> The validation problem
+					<p class="fragment"> <i>In vivo validation</i> through statistical learning 
+				</section>
+
+				<section>
+					<div style="position:absolute; left: 0px; top:-200px;">
+					<h2>Collaborators</h2>
+					</div>
+					<div class="fragment" style="position:absolute; left: 0px; top:-100px;">
+						Dipy:
+					</div>
+					<div class="fragment"style="position:absolute; left: 20px; top:0px;">
+						<img src="images/eleftherios.png" width="200px;" style="background:none; border:none; box-shadow:none;">
+					</div>
+
+				</section>
 
 			</div>
 		</div>
