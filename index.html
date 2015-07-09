@@ -32,8 +32,7 @@
 
 		<!-- Draw arrows -->		
 		<script>
-
-        function canvas_arrow(context, fromx, fromy, tox, toy){
+        function canvas_arrow_two_heads(context, fromx, fromy, tox, toy){
         var headlen = 10;   // length of head in pixels
         var angle = Math.atan2(toy-fromy,tox-fromx);
         context.moveTo(fromx, fromy);
@@ -46,7 +45,19 @@
         context.moveTo(tox, toy);
         context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));}
        	</script>
-	
+
+		<script>
+        function canvas_arrow(context, fromx, fromy, tox, toy){
+        var headlen = 10;   // length of head in pixels
+        var angle = Math.atan2(toy-fromy,tox-fromx);
+        context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);        
+        context.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+        context.moveTo(tox, toy);
+        context.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));}
+        </script>
+
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -109,7 +120,7 @@
 					    <script>
 					      context = document.getElementById('arrows-iso-horiz').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 390, 450, 590, 450);
+						  canvas_arrow_two_heads(context, 390, 450, 590, 450);
 					      context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -120,7 +131,7 @@
 					    <script>
 					      context = document.getElementById('arrows-iso-vert').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 250, 350, 250, 150);
+						  canvas_arrow_two_heads(context, 250, 350, 250, 150);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -143,7 +154,7 @@
 					    <script>
 					      context = document.getElementById('arrows-aniso-vert').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 250, 325, 250, 175);
+						  canvas_arrow_two_heads(context, 250, 325, 250, 175);
 						context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -154,7 +165,7 @@
 					    <script>
 					      context = document.getElementById('arrows-aniso-horiz').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 370, 400, 610, 400);
+						  canvas_arrow_two_heads(context, 370, 400, 610, 400);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -184,7 +195,7 @@
 					    <script>
 					      context = document.getElementById('fiber-arrow-horiz').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 630, 600, 800, 600);
+						  canvas_arrow_two_heads(context, 630, 600, 800, 600);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -195,7 +206,7 @@
 					    <script>
 					      context = document.getElementById('fiber-arrow-vert').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 450, 100, 450, 400);
+						  canvas_arrow_two_heads(context, 450, 100, 450, 400);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -348,13 +359,14 @@
 					   <p class="fragment"> International: contributors from at least six different countries </p>
 					   <p class="fragment"> Shared: not 'owned' by any particular lab</p>
 				</section>
-
+				<!-- 
 				<section>
 					<img src="./images/dipy-growth.png" style="background:none; border:none; box-shadow:none;">
 					   <div style="position: absolute; left: 700px; top: 700px">
 						<small><a href="http://journal.frontiersin.org/Journal/10.3389/fninf.2014.00008">Garyfallidis et al.(2014)</a></small>
 					</div>
 				</section>
+				-->
 
 				<section>
 				<img src="images/dipy_overview_figure.png" style="background:none; border:none; box-shadow:none;">
@@ -408,7 +420,7 @@
 					    <script>
 					      context = document.getElementById('arrow-test-retest').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 300, 150, 650, 150);
+						  canvas_arrow_two_heads(context, 300, 150, 650, 150);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -423,7 +435,7 @@
 					    <script>
 					      context = document.getElementById('arrow-cv1').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 310, 400, 410, 400);
+						  canvas_arrow_two_heads(context, 310, 400, 410, 400);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -437,7 +449,7 @@
 					    <script>
 					      context = document.getElementById('arrow-cv2').getContext("2d");
 					      context.beginPath();
-						  canvas_arrow(context, 550, 400, 650, 400);
+						  canvas_arrow_two_heads(context, 550, 400, 650, 400);
 						  context.lineWidth = 2;
 					      context.stroke();
 					    </script>
@@ -569,11 +581,125 @@
 					<h2>LiFE: Linear Fascicle Evaluation</h2>
 					<p class="fragment">
 					Forward model from the tracks to the measured signal
+				<div style="position: absolute; left: 500px; top: 650px;" >
+							<small>Pestilli et al. (2014)</small>
+				</div>
+				</section>
+
+				<section data-transition="fade-out">
+					<h3>From diffusion to tracks</h3>
+					<div style="position: absolute; left:-100px">
+					<img src="ipynb/d2t-bkgrnd.png" style="background:none; border:none; box-shadow:none;" height="505", width="766">
+				</div>
+					<div style="position: absolute; left: -9px; top:58px;"><img src="ipynb/tensor_ellipsoids.png" style="background:none; border:none; box-shadow:none; opacity:0.4; filter:alpha(opacity=40);">
+					</div>
+					<div style="position: absolute; left: -100px;">	
+					<canvas id="tracks2sig" width="1000" height="1000"></canvas>
+					    <script>
+					      var canvas = document.getElementById('tracks2sig');
+					      var context = canvas.getContext('2d');
+
+					      context.beginPath();
+					      context.moveTo(590, 170);
+					      context.bezierCurveTo(400, 300, 365, 80, 378, 65);
+					      context.lineWidth = 10;
+						  context.strokeStyle = 'yellow';
+					      context.stroke();
+					    
+					      context.beginPath();
+						  context.moveTo(450, 455);
+					      context.bezierCurveTo(320, 300, 365, 80, 378, 65);
+					      context.lineWidth = 10;
+						  context.strokeStyle = 'red';
+					      context.stroke();
+
+					      // line color
+					    </script>
+					  </div>
+				</section>
+
+				<section data-transition="fade">
+					<h3>From tracks to diffusion</h3>
+					<div style="position: absolute; left:-100px">	
+					<canvas id="tracks2sig2" width="1000" height="1000"></canvas>
+					    <script>
+					      var canvas = document.getElementById('tracks2sig2');
+					      var context = canvas.getContext('2d');
+
+					      context.beginPath();
+					      context.moveTo(590, 170);
+					      context.bezierCurveTo(400, 300, 365, 80, 378, 65);
+					      context.lineWidth = 10;
+						  context.strokeStyle = 'yellow';
+					      context.stroke();
+					    
+					      context.beginPath();
+						  context.moveTo(450, 455);
+					      context.bezierCurveTo(320, 300, 365, 80, 378, 65);
+					      context.lineWidth = 10;
+						  context.strokeStyle = 'red';
+					      context.stroke();
+					    </script>
+					</div>
+					
+					<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-life1" width="1000" height="1000">
+					</canvas>
+					    <script>
+					      context = document.getElementById('arrows-life1').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 500, 170, 600, 140);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					</div>
+					<div class="fragment fade-in" style="position: absolute; left:600px; top:200px;">
+						<img src="images/track1-sig.png" style="background:none; border:none; box-shadow:none;" height="300px">
+					</div>
+					<div class = "fragment fade-in" style="position: absolute">
+					<canvas id="arrows-life2" width="1000" height="1000"></canvas>
+					    <script>
+					      context = document.getElementById('arrows-life2').getContext("2d");
+					      context.beginPath();
+						  canvas_arrow(context, 280, 55, 650, 110);
+						  context.lineWidth = 2;
+					      context.stroke();
+					    </script>
+					</div>
+
+					<div class="fragment fade-in" style="position: absolute; left:650px; top:200px;">
+						<img src="images/track2-sig.png" style="background:none; border:none; box-shadow:none;" height="300px">
+					</div>
+
+					<div class="fragment fade-in"style="position:absolute; left:750px; top:300px;"> ... </div>
+
+					<div class="fragment fade-in"style="position:absolute; left:800px; top:300px;"> = </div>
+
+					<div class="fragment fade-in" style="position: absolute; left:850px; top:200px;">
+						<img src="images/voxel-sig.png" style="background:none; border:none; box-shadow:none;" height="300px">
+					</div>
+					<div style="position: absolute; left: 500px; top: 650px;" >
+					<small>Pestilli et al. (2014)</small>
+					</div>
+
 				</section>
 
 				<section>
+				<div style="position:absolute; left:100px">
+					<img src="images/GLM.png" style="background:none; border:none; box-shadow:none;">
+				</div>
+				<div class="fragment" style="position:absolute; left:370px; top:50px;">
+					Solve for
+				</div>
+					<div class="fragment" style="position:absolute; top:45px; left:530px">
+						<img src="images/beta_larger_zero.png" style="background:none; border:none; box-shadow:none;" height="40px;"></div>
+					<div style="position: absolute; left: 500px; top: 650px;" >
+					<small>Pestilli et al. (2014)</small>
+					</div>
+				</section>
+				<section>
 				<code>
-				<div align="left" style="position:absolute; left: -200px; top:-100px;">
+				<div align="left" style="position:absolute; left: -180px; top:-100px;">
 				<p class="fragment">
 					fiber_model = life.FiberModel(gtab)
 				<p class="fragment" align="left">
@@ -594,7 +720,7 @@
 					<p class="fragment"> <i>In vivo validation</i> through statistical learning 
 				</section>
 
-				<section>
+				<section data-transition="fade-out">
 					<div style="position:absolute; left: 0px; top:-200px;">
 					<h2>Collaborators</h2>
 					</div>
@@ -602,11 +728,52 @@
 						Dipy:
 					</div>
 					<div class="fragment"style="position:absolute; left: 20px; top:0px;">
-						<img src="images/eleftherios.png" width="200px;" style="background:none; border:none; box-shadow:none;">
+						<img src="images/eleftherios.png" width="150px;" style="background:none; border:none; box-shadow:none;">
+						<div>
+							Eleftherios <br> Garyfallidis
+						</div>
+					</div>
+
+					<div class="fragment"style="position:absolute; left: 220px; top:0px;">
+						<img src="images/stefan.png" width="150px;" style="background:none; border:none; box-shadow:none;">
+						<div>
+							Stefan <br> Van der Walt
+						</div>
+					</div>
+
+					<div class="fragment"style="position:absolute; left: 430px; top:-2px;">
+						<img src="images/bago.png" width="160px;" style="background:none; border:none; box-shadow:none;">
+						<div>
+							Bago <br> Amirbekian
+						</div>
 					</div>
 
 				</section>
+				<section data-transition="fade">
+					<div style="position:absolute; left: 0px; top:-200px;">
+					<h2>Collaborators</h2>
+					</div>
 
+					<div class="fragment" style="position:absolute; left: 0px; top:-100px;">
+					Stanford VISTA lab:
+					</div>
+					<div class="fragment"style="position:absolute; left: 20px; top:0px;">
+						<img src="images/brian.png" width="150px;" style="background:none; border:none; box-shadow:none;">
+						<div>
+							Brian <br> Wandell
+						</div>
+					</div>
+
+					<div class="fragment"style="position:absolute; left: 220px; top:0px;">
+						<img src="images/franco.png" width="150px;" style="background:none; border:none; box-shadow:none;">
+						<div>
+							Franco <br> Pestilli
+						</div>
+					</div>
+				</section>
+				<section>
+				<h1>Questions?</h1>
+				</section>
 			</div>
 		</div>
 
